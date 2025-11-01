@@ -1,0 +1,66 @@
+# Виртуальные окружения
+venv/
+env/
+.venv/
+ENV/
+
+# Кеш Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Распределения и установки
+dist/
+build/
+*.egg-info/
+.eggs/
+pip-log.txt
+
+# Единицы测试
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Операционные системы
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Логи и базы данных
+*.log
+*.sqlite3
+
+# Файлы окружения
+.env
+.venv
+.env.local
+.env.production
+
+# Файлы документации
+docs
+src/modules
+
+# Инструкции для ИИ-агентов
+.ai_workflow
+.context
+.cursor
