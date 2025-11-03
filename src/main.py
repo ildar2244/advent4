@@ -8,6 +8,9 @@ from src.config import Config
 from src.features.registry import FeatureRegistry
 from src.features.day_01.chat_feature import ChatFeature
 
+# Убираем детальные логи httpx (включая URL с токеном)
+logging.getLogger("httpx").setLevel(logging.WARNING)
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
