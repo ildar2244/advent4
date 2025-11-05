@@ -56,6 +56,9 @@ class TelegramBot:
         if not self.application:
             raise RuntimeError("Application not initialized")
         
+        # Register format handlers
+        # Format handlers removed
+        
         # Register features from registry
         if self.registry:
             for feature in self.registry.get_all():
@@ -93,11 +96,21 @@ class TelegramBot:
         
     async def stop(self):
         """Stop the bot gracefully."""
-        if self.application:
-            logger.info("Stopping bot...")
-            await self.application.updater.stop()
+        if not self.application:
+            return
+    
+        logger.info("Stopping bot...")
+        try:
+            # Останавливаем updater, только если он запущен
+            if self.application.updater and self.application.updater.running:
+                await self.application.updater.stop()
+            
             await self.application.stop()
             await self.application.shutdown()
+            logger.info("Bot stopped successfully.")
+        except Exception as e:
+            logger.error(f"Error during bot shutdown: {e}")
+
     
     async def run(self):
         """Run the bot (blocking)."""

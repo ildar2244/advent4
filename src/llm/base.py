@@ -1,8 +1,9 @@
 """Base LLM interface and abstract classes."""
 from abc import ABC, abstractmethod
-from typing import AsyncGenerator
+from typing import AsyncGenerator, Optional
 
 from src.utils.typing import LLMResponse
+from src.llm.dto.json_response import JSONResponse
 
 
 class BaseLLM(ABC):
@@ -19,8 +20,21 @@ class BaseLLM(ABC):
         self.display_name = display_name
     
     @abstractmethod
-    async def generate_response(self, prompt: str) -> AsyncGenerator[LLMResponse, None]:
+    async def generate_response(self, prompt: str, json_format: bool = False) -> AsyncGenerator[LLMResponse, None]:
         """Generate response from LLM.
+        
+        Args:
+            prompt: User's prompt/question
+            json_format: Whether to require JSON format response
+            
+        Yields:
+            LLMResponse: Streaming response chunks
+        """
+        pass
+    
+    @abstractmethod
+    async def generate_json_response(self, prompt: str) -> AsyncGenerator[LLMResponse, None]:
+        """Generate response in JSON format from LLM.
         
         Args:
             prompt: User's prompt/question
